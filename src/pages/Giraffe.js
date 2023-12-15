@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import classes from './../index.module.css';
 import smilingGiraffe from './../components/Images/smiling Giraffe.jpg';
 import { useElapsedOneHour } from './../hooks/useElapsedOneHour';
@@ -57,7 +57,7 @@ const Giraffe = () => {
   const handleFeedAnimals = () => {
     onFeedAnimal(giraffes, deadGiraffe, smilingGiraffe, setGiraffes, 49);
   };
-  useElapsedOneHour(giraffes, onHourReduce);
+  useElapsedOneHour(giraffes, handleHourReduce);
 
   return (
     <div className={classes.container}>
@@ -72,7 +72,12 @@ const Giraffe = () => {
               alt=""
             />
             <h3>Health Status: {giraffeCharacteristics.health.toFixed(0)}%</h3>
-            <h4>Active Status: {giraffeCharacteristics.status}</h4>
+            <h4>
+              Active Status:{' '}
+              <span style={{ color: 'green' }}>
+                {giraffeCharacteristics.status}
+              </span>
+            </h4>
           </div>
         ))}
       </ul>

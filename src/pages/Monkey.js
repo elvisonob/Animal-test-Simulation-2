@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import classes from './../index.module.css';
 import smilingMonkey from './../components/Images/Smiling monkey.png';
 import deadMonkeyPicture from './../components/Images/Dead monkey.jpg';
@@ -73,7 +73,12 @@ const Monkey = () => {
               alt=""
             />
             <h3>Health Status: {monkeyCharacteristics.health.toFixed(0)}%</h3>
-            <h4>Active Status: {monkeyCharacteristics.status}</h4>
+            <h4>
+              Active Status:{' '}
+              <span style={{ color: 'green' }}>
+                {monkeyCharacteristics.status}
+              </span>
+            </h4>
           </div>
         ))}
       </ul>
