@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import classes from './../index.module.css';
 import smilingGiraffe from './../components/Images/smiling Giraffe.jpg';
 import { useElapsedOneHour } from './../hooks/useElapsedOneHour';
+import { onHourReduce } from './../UIElement/functionsUtils';
 import { useZooTime } from './../hooks/useZooTime';
 import deadGiraffe from './../components/Images/dead giraffe.jpg';
+import { onFeedAnimal } from './../UIElement/functionsUtils';
 const giraffeList = [
   {
     id: 'g1',
@@ -48,62 +50,14 @@ const giraffeList = [
 const Giraffe = () => {
   const [giraffes, setGiraffes] = useState(giraffeList);
 
-  const onHourReduce = () => {
-    const updatedReductionGiraffes = giraffes.map((giraffe) => {
-      const generatedRandomNumber = Math.floor(Math.random() * 20) + 1; // Generate random number between 0 and 20
-      const percentage = (generatedRandomNumber / 100) * giraffe.health;
-      const currentHealthStatus = giraffe.health - percentage; // Ensure health doesn't go below 0
-
-      const updatedStatus =
-        currentHealthStatus < 49 ? (
-          <p style={{ color: 'red' }}>Dead</p>
-        ) : (
-          'Alive'
-        );
-
-      const updatedImage =
-        currentHealthStatus < 49 ? deadGiraffe : smilingGiraffe;
-
-      return {
-        ...giraffe,
-        health: currentHealthStatus,
-        status: updatedStatus,
-        image: updatedImage,
-      };
-    });
-
-    setGiraffes(updatedReductionGiraffes);
+  const handleHourReduce = () => {
+    onHourReduce(giraffes, deadGiraffe, smilingGiraffe, setGiraffes, 49);
   };
 
+  const handleFeedAnimals = () => {
+    onFeedAnimal(giraffes, deadGiraffe, smilingGiraffe, setGiraffes, 49);
+  };
   useElapsedOneHour(giraffes, onHourReduce);
-
-  const onFeedAnimal = () => {
-    const feedUpdate = giraffes.map((giraffe) => {
-      const feedGeneratedRandomNumber =
-        Math.floor(Math.random() * (25 - 10) + 1) + 10;
-      const feedPercentage = (feedGeneratedRandomNumber / 100) * giraffe.health;
-      const increasedHealthStatus = giraffe.health + feedPercentage;
-      const healthCappedAt100 =
-        increasedHealthStatus > 100 ? 100 : increasedHealthStatus;
-      const updatedStatus =
-        increasedHealthStatus < 49 ? (
-          <p style={{ color: 'red' }}>Dead</p>
-        ) : (
-          'Alive'
-        );
-
-      const updatedImage =
-        increasedHealthStatus < 49 ? deadGiraffe : smilingGiraffe;
-
-      return {
-        ...giraffe,
-        health: healthCappedAt100,
-        status: updatedStatus,
-        image: updatedImage,
-      };
-    });
-    setGiraffes(feedUpdate);
-  };
 
   return (
     <div className={classes.container}>
@@ -124,10 +78,10 @@ const Giraffe = () => {
       </ul>
 
       <div className={classes.buttonSection}>
-        <button className={classes.Feed} onClick={onFeedAnimal}>
+        <button className={classes.feed} onClick={handleFeedAnimals}>
           Feed
         </button>
-        <button className={classes.toggleHour} onClick={onHourReduce}>
+        <button className={classes.toggleHour} onClick={handleHourReduce}>
           After an hour
         </button>
       </div>

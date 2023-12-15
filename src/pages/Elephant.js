@@ -145,7 +145,7 @@ const Elephant = () => {
       </ul>
 
       <div className={classes.buttonSection}>
-        <button className={classes.Feed} onClick={onFeedAnimal}>
+        <button className={classes.feed} onClick={onFeedAnimal}>
           Feed
         </button>
         <button className={classes.toggleHour} onClick={onHourReduce}>
