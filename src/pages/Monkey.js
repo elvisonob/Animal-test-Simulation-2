@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import classes from './Monkey.module.css';
 import smilingMonkey from './../components/Images/Smiling monkey.png';
 import deadMonkeyPicture from './../components/Images/Dead monkey.jpg';
-const MonkeyList = [
+const monkeyList = [
   {
     id: 'm1',
     name: 'Monkey-1',
@@ -44,7 +44,7 @@ const MonkeyList = [
 ];
 
 const Monkey = () => {
-  const [monkeys, setMonkeys] = useState(MonkeyList);
+  const [monkeys, setMonkeys] = useState(monkeyList);
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
