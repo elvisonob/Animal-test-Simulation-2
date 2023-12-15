@@ -1,0 +1,28 @@
+.header {
+    max-width: 100rem;
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+    background-color: blue;
+}
+
+.list {
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+}
+
+.list a {
+    text-decoration: none;
+    color: white;
+    font-weight: bolder;
+}
+
+.list a:hover,
+.list a.active {
+    color: var(--color-primary-800);
+    background-color: orange;
+    padding: 6px;
+    border-radius: 7px;
+}

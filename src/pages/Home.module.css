@@ -1,0 +1,50 @@
+.Link {
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    background-color: grey;
+    height: 100vh;
+}
+
+.homepage {
+    padding-top: 40px;
+    display: grid;
+    justify-items: center;
+}
+
+.subhomepage {
+    background-color: white;
+    height: 600px;
+    width: 360px;
+    border-radius: 10px;
+    display: grid;
+    align-content: center;
+    padding: 50px;
+}
+
+.subhomepage li {
+    display: grid;
+    justify-items: center;
+}
+
+h4 {
+    margin-bottom: 10rem;
+    color: black;
+}
+
+.homepage li {
+    padding-top: 20px;
+    list-style: none;
+    border: 2px solid blue;
+    margin: 5px;
+    padding: 5px 20px;
+    background-color: blue;
+    color: white;
+}
