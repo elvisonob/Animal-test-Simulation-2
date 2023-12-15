@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import classes from './Monkey.module.css';
+import classes from './../index.module.css';
 import smilingMonkey from './../components/Images/Smiling monkey.png';
 import deadMonkeyPicture from './../components/Images/Dead monkey.jpg';
+import { useZooTime } from './../hooks/useZooTime';
+import { useElapsedOneHour } from './../hooks/useElapsedOneHour';
 const monkeyList = [
   {
     id: 'm1',
@@ -45,31 +47,6 @@ const monkeyList = [
 
 const Monkey = () => {
   const [monkeys, setMonkeys] = useState(monkeyList);
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const startTime = new Date().getTime();
-
-    const intervalId = setInterval(() => {
-      const currentTime = new Date().getTime();
-      const elapsedTime = currentTime - startTime;
-
-      if (elapsedTime >= 3600000) {
-        onHourReduce();
-        clearInterval(intervalId);
-      }
-    }, 1000);
-
-    // Clean up the interval when the component unmounts
-    return () => clearInterval(intervalId);
-  }, [monkeys]);
-
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  }, []);
 
   const onHourReduce = () => {
     const updatedReductionMonkeys = monkeys.map((monkey) => {
@@ -78,14 +55,14 @@ const Monkey = () => {
       const currentHealthStatus = monkey.health - percentage; // Ensure health doesn't go below 0
 
       const updatedStatus =
-        currentHealthStatus < 30 ? (
+        currentHealthStatus < 29 ? (
           <p style={{ color: 'red' }}>Dead</p>
         ) : (
           'Alive'
         );
 
       const updatedImage =
-        currentHealthStatus < 30 ? deadMonkeyPicture : smilingMonkey;
+        currentHealthStatus < 29 ? deadMonkeyPicture : smilingMonkey;
 
       return {
         ...monkey,
@@ -98,6 +75,8 @@ const Monkey = () => {
     setMonkeys(updatedReductionMonkeys);
   };
 
+  useElapsedOneHour(monkeys, onHourReduce);
+
   const onFeedAnimal = () => {
     const feedUpdate = monkeys.map((monkey) => {
       const feedGeneratedRandomNumber =
@@ -107,14 +86,14 @@ const Monkey = () => {
       const healthCappedAt100 =
         increasedHealthStatus > 100 ? 100 : increasedHealthStatus;
       const updatedStatus =
-        increasedHealthStatus < 30 ? (
+        increasedHealthStatus < 29 ? (
           <p style={{ color: 'red' }}>Dead</p>
         ) : (
           'Alive'
         );
 
       const updatedImage =
-        increasedHealthStatus < 30 ? deadMonkeyPicture : smilingMonkey;
+        increasedHealthStatus < 29 ? deadMonkeyPicture : smilingMonkey;
 
       return {
         ...monkey,
@@ -154,7 +133,7 @@ const Monkey = () => {
       </div>
       <div className={classes.timerSection}>
         <h4 className={classes.timeDisplay}>
-          Current zoo time: {time.toLocaleTimeString()}
+          Current zoo time: {useZooTime().toLocaleTimeString()}
         </h4>
       </div>
     </div>

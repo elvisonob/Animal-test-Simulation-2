@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import classes from './Monkey.module.css';
+import classes from './../index.module.css';
 import smilingGiraffe from './../components/Images/smiling Giraffe.jpg';
+import { useElapsedOneHour } from './../hooks/useElapsedOneHour';
+import { useZooTime } from './../hooks/useZooTime';
 import deadGiraffe from './../components/Images/dead giraffe.jpg';
 const giraffeList = [
   {
@@ -45,31 +47,6 @@ const giraffeList = [
 
 const Giraffe = () => {
   const [giraffes, setGiraffes] = useState(giraffeList);
-  const [time, setTime] = useState(new Date());
-
-  useEffect(() => {
-    const startTime = new Date().getTime();
-
-    const intervalId = setInterval(() => {
-      const currentTime = new Date().getTime();
-      const elapsedTime = currentTime - startTime;
-
-      if (elapsedTime >= 3600000) {
-        onHourReduce();
-        clearInterval(intervalId);
-      }
-    }, 1000);
-
-    // Clean up the interval when the component unmounts
-    return () => clearInterval(intervalId);
-  }, [giraffes]);
-
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  }, []);
 
   const onHourReduce = () => {
     const updatedReductionGiraffes = giraffes.map((giraffe) => {
@@ -78,14 +55,14 @@ const Giraffe = () => {
       const currentHealthStatus = giraffe.health - percentage; // Ensure health doesn't go below 0
 
       const updatedStatus =
-        currentHealthStatus < 50 ? (
+        currentHealthStatus < 49 ? (
           <p style={{ color: 'red' }}>Dead</p>
         ) : (
           'Alive'
         );
 
       const updatedImage =
-        currentHealthStatus < 50 ? deadGiraffe : smilingGiraffe;
+        currentHealthStatus < 49 ? deadGiraffe : smilingGiraffe;
 
       return {
         ...giraffe,
@@ -98,6 +75,8 @@ const Giraffe = () => {
     setGiraffes(updatedReductionGiraffes);
   };
 
+  useElapsedOneHour(giraffes, onHourReduce);
+
   const onFeedAnimal = () => {
     const feedUpdate = giraffes.map((giraffe) => {
       const feedGeneratedRandomNumber =
@@ -107,14 +86,14 @@ const Giraffe = () => {
       const healthCappedAt100 =
         increasedHealthStatus > 100 ? 100 : increasedHealthStatus;
       const updatedStatus =
-        increasedHealthStatus < 50 ? (
+        increasedHealthStatus < 49 ? (
           <p style={{ color: 'red' }}>Dead</p>
         ) : (
           'Alive'
         );
 
       const updatedImage =
-        increasedHealthStatus < 50 ? deadGiraffe : smilingGiraffe;
+        increasedHealthStatus < 49 ? deadGiraffe : smilingGiraffe;
 
       return {
         ...giraffe,
@@ -154,7 +133,7 @@ const Giraffe = () => {
       </div>
       <div className={classes.timerSection}>
         <h4 className={classes.timeDisplay}>
-          Current zoo time: {time.toLocaleTimeString()}
+          Current zoo time: {useZooTime().toLocaleTimeString()}
         </h4>
       </div>
     </div>

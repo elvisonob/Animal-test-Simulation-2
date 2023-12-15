@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import classes from './Monkey.module.css';
+import classes from './../index.module.css';
 import smilingElephant from './../components/Images/smiling elephant.jpg';
 import elephantCantWalk from './../components/Images/elephant cant walk.jpg';
+import { useElapsedOneHour } from './../hooks/useElapsedOneHour';
+import { useZooTime } from './../hooks/useZooTime';
 const elephantList = [
   {
     id: 'e1',
@@ -45,7 +47,6 @@ const elephantList = [
 
 const Elephant = () => {
   const [elephants, setElephants] = useState(elephantList);
-  const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     const startTime = new Date().getTime();
@@ -54,9 +55,8 @@ const Elephant = () => {
       const currentTime = new Date().getTime();
       const elapsedTime = currentTime - startTime;
 
-      if (elapsedTime >= 5000) {
+      if (elapsedTime >= 360000) {
         onHourReduce();
-        onHourReduce2();
 
         clearInterval(intervalId);
       }
@@ -65,13 +65,6 @@ const Elephant = () => {
     // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);
   }, [elephants]);
-
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  }, []);
 
   const onHourReduce = () => {
     const updatedReductionElephants = elephants.map((elephant) => {
@@ -98,34 +91,11 @@ const Elephant = () => {
     });
 
     setElephants(updatedReductionElephants);
+    if (elephants.health) {
+    }
   };
 
-  const onHourReduce2 = () => {
-    const updatedReductionElephants = elephants.map((elephant) => {
-      const generatedRandomNumber = Math.floor(Math.random() * 20) + 1; // Generate random number between 0 and 20
-      const percentage = (generatedRandomNumber / 100) * elephant.health;
-      const currentHealthStatus = elephant.health - percentage; // Ensure health doesn't go below 0
-
-      const updatedStatus =
-        currentHealthStatus < 70 ? (
-          <p style={{ color: 'red' }}>Dead</p>
-        ) : (
-          'Alive and can walk'
-        );
-
-      const updatedImage =
-        currentHealthStatus < 70 ? elephantCantWalk : smilingElephant;
-
-      return {
-        ...elephant,
-        health: currentHealthStatus,
-        status: updatedStatus,
-        image: updatedImage,
-      };
-    });
-
-    setElephants(updatedReductionElephants);
-  };
+  useElapsedOneHour(elephants, onHourReduce);
 
   const onFeedAnimal = () => {
     const feedUpdate = elephants.map((elephant) => {
@@ -164,7 +134,7 @@ const Elephant = () => {
             <h2>{elephantCharacteristics.name}</h2>
             <img
               src={elephantCharacteristics.image}
-              width="100%"
+              width="95%"
               height="100%"
               alt=""
             />
@@ -184,7 +154,7 @@ const Elephant = () => {
       </div>
       <div className={classes.timerSection}>
         <h4 className={classes.timeDisplay}>
-          Current zoo time: {time.toLocaleTimeString()}
+          Current zoo time: {useZooTime().toLocaleTimeString()}
         </h4>
       </div>
     </div>
