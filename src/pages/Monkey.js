@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import classes from './Monkey.module.css';
+import smilingMonkey from './../components/Images/Smiling monkey.png';
+import deadMonkeyPicture from './../components/Images/Dead monkey.jpg';
 const MonkeyList = [
   {
     id: 'm1',
     name: 'Monkey-1',
-    image: 'image-coming-soon',
+    image: smilingMonkey,
     health: 100,
     status: 'Alive',
   },
@@ -12,7 +14,7 @@ const MonkeyList = [
   {
     id: 'm2',
     name: 'Monkey-2',
-    image: 'image-coming-soon',
+    image: smilingMonkey,
     health: 100,
     status: 'Alive',
   },
@@ -20,7 +22,7 @@ const MonkeyList = [
   {
     id: 'm3',
     name: 'Monkey-3',
-    image: 'image-coming-soon',
+    image: smilingMonkey,
     health: 100,
     status: 'Alive',
   },
@@ -28,14 +30,14 @@ const MonkeyList = [
   {
     id: 'm4',
     name: 'Monkey-4',
-    image: 'image-coming-soon',
+    image: smilingMonkey,
     health: 100,
     status: 'Alive',
   },
   {
     id: 'm5',
     name: 'Monkey-5',
-    image: 'image-coming-soon',
+    image: smilingMonkey,
     health: 100,
     status: 'Alive',
   },
@@ -82,7 +84,15 @@ const Monkey = () => {
           'Alive'
         );
 
-      return { ...monkey, health: currentHealthStatus, status: updatedStatus };
+      const updatedImage =
+        currentHealthStatus < 30 ? deadMonkeyPicture : smilingMonkey;
+
+      return {
+        ...monkey,
+        health: currentHealthStatus,
+        status: updatedStatus,
+        image: updatedImage,
+      };
     });
 
     setMonkeys(updatedReductionMonkeys);
@@ -103,10 +113,14 @@ const Monkey = () => {
           'Alive'
         );
 
+      const updatedImage =
+        increasedHealthStatus < 30 ? deadMonkeyPicture : smilingMonkey;
+
       return {
         ...monkey,
         health: healthCappedAt100,
         status: updatedStatus,
+        image: updatedImage,
       };
     });
     setMonkeys(feedUpdate);
@@ -118,7 +132,12 @@ const Monkey = () => {
         {monkeys.map((monkeyCharacteristics) => (
           <div className={classes.topSection} key={monkeyCharacteristics.id}>
             <h2>{monkeyCharacteristics.name}</h2>
-            <p>{monkeyCharacteristics.image}</p>
+            <img
+              src={monkeyCharacteristics.image}
+              width="100%"
+              height="100%"
+              alt=""
+            />
             <h3>Health Status: {monkeyCharacteristics.health.toFixed(0)}%</h3>
             <h4>Active Status: {monkeyCharacteristics.status}</h4>
           </div>
