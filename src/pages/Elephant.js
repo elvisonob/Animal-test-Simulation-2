@@ -89,7 +89,7 @@ const Elephant = () => {
             <h3>Health Status: {elephantCharacteristics.health.toFixed(0)}%</h3>
             <h4>
               Active Status:{' '}
-              <span style={{ color: 'green' }}>
+              <span style={{ color: 'green', fontSize: 'large' }}>
                 {elephantCharacteristics.status}
               </span>
             </h4>

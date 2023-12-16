@@ -74,7 +74,7 @@ const Giraffe = () => {
             <h3>Health Status: {giraffeCharacteristics.health.toFixed(0)}%</h3>
             <h4>
               Active Status:{' '}
-              <span style={{ color: 'green' }}>
+              <span style={{ color: 'green', fontSize: 'larger' }}>
                 {giraffeCharacteristics.status}
               </span>
             </h4>

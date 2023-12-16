@@ -7,9 +7,9 @@ const Home = () => {
       <div className={classes.homepage}>
         <div className={classes.subhomepage}>
           <h4>
-            Welcome to the British Zoo simulation, you can view our selected
-            animal's health; reduce their health status, and also feed and
-            increase their health status.
+            Welcome to the British Zoo simulation application, you can view our
+            selected animal's health; reduce their health status, and also feed
+            and increase their health status.
             <br />
             <br />
             Thank you and enjoy the simulation.

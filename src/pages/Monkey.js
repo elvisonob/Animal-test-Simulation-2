@@ -75,7 +75,7 @@ const Monkey = () => {
             <h3>Health Status: {monkeyCharacteristics.health.toFixed(0)}%</h3>
             <h4>
               Active Status:{' '}
-              <span style={{ color: 'green' }}>
+              <span style={{ color: 'green', fontSize: 'larger' }}>
                 {monkeyCharacteristics.status}
               </span>
             </h4>
