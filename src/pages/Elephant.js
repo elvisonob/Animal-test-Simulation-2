@@ -6,6 +6,7 @@ import { onHourReduceElephant } from './../UIElement/functionsUtils';
 import { onFeedAnimalElephant } from './../UIElement/functionsUtils';
 import { useElapsedOneHour } from './../hooks/useElapsedOneHour';
 import { useZooTime } from './../hooks/useZooTime';
+
 const elephantList = [
   {
     id: 'e1',

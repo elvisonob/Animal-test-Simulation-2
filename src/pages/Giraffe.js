@@ -6,6 +6,7 @@ import { onHourReduce } from './../UIElement/functionsUtils';
 import { useZooTime } from './../hooks/useZooTime';
 import deadGiraffe from './../components/Images/dead giraffe.jpg';
 import { onFeedAnimal } from './../UIElement/functionsUtils';
+
 const giraffeList = [
   {
     id: 'g1',
