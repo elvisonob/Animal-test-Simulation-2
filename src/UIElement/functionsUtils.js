@@ -5,10 +5,10 @@ export const onHourReduce = (
   setAnimals,
   number
 ) => {
-  const updatedReductionMonkeys = animals.map((monkey) => {
+  const updatedReductionMonkeys = animals.map((animal) => {
     const generatedRandomNumber = Math.floor(Math.random() * 20) + 1;
-    const percentage = (generatedRandomNumber / 100) * monkey.health;
-    const currentHealthStatus = monkey.health - percentage;
+    const percentage = (generatedRandomNumber / 100) * animal.health;
+    const currentHealthStatus = animal.health - percentage;
 
     const updatedStatus =
       currentHealthStatus < number ? (
@@ -20,7 +20,7 @@ export const onHourReduce = (
     const updatedImage = currentHealthStatus < number ? picture2 : picture1;
 
     return {
-      ...monkey,
+      ...animal,
       health: currentHealthStatus,
       status: updatedStatus,
       image: updatedImage,
@@ -37,11 +37,11 @@ export const onFeedAnimal = (
   setAnimals,
   number
 ) => {
-  const feedUpdate = animals.map((monkey) => {
+  const feedUpdate = animals.map((animal) => {
     const feedGeneratedRandomNumber =
       Math.floor(Math.random() * (25 - 10) + 1) + 10;
-    const feedPercentage = (feedGeneratedRandomNumber / 100) * monkey.health;
-    const increasedHealthStatus = monkey.health + feedPercentage;
+    const feedPercentage = (feedGeneratedRandomNumber / 100) * animal.health;
+    const increasedHealthStatus = animal.health + feedPercentage;
     const healthCappedAt100 =
       increasedHealthStatus > 100 ? 100 : increasedHealthStatus;
     const updatedStatus =
@@ -54,7 +54,7 @@ export const onFeedAnimal = (
     const updatedImage = increasedHealthStatus < number ? picture2 : picture1;
 
     return {
-      ...monkey,
+      ...animal,
       health: healthCappedAt100,
       status: updatedStatus,
       image: updatedImage,

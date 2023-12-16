@@ -58,6 +58,7 @@ const Giraffe = () => {
   const handleFeedAnimals = () => {
     onFeedAnimal(giraffes, deadGiraffe, smilingGiraffe, setGiraffes, 49);
   };
+
   useElapsedOneHour(giraffes, handleHourReduce);
 
   return (
