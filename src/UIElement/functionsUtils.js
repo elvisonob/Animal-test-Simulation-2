@@ -1,3 +1,5 @@
+//This is a function I wrote to generate a random number between 0 and 20 and reduce the current health base on the percentage of the random number generated.
+// I included parameters in order to make the function resuable with two types of animals (Monkey and Giraffe)
 export const onHourReduce = (
   animals,
   picture2,
@@ -29,6 +31,9 @@ export const onHourReduce = (
 
   setAnimals(updatedReductionMonkeys);
 };
+
+//This is a function I wrote to generate a random number between 10 and 25, and increase the current health base on the percentage of the random number generated.
+// I included parameters in order to make the function resuable with two types of animals (Monkey and Giraffe)
 
 export const onFeedAnimal = (
   animals,
@@ -63,6 +68,9 @@ export const onFeedAnimal = (
   setAnimals(feedUpdate);
 };
 
+//This is a function I wrote to generate a random number between 0 and 20 and reduce the current health base on the percentage of the random number generated.
+// I included parameters in order to make the function resuable and this function only applies to the Elephant animal.
+// The Elephant animal functionality has a slight difference compared to Monkey and Giraffe, and this is why i wrote a different function for it.
 export const onHourReduceElephant = (
   animals,
   hasWalkStatus,
@@ -103,6 +111,9 @@ export const onHourReduceElephant = (
   setAnimals(updatedReductionElephants);
 };
 
+//This is a function I wrote to generate a random number between 10 and 25 and increases the current health base on the percentage of the random number generated.
+// I included parameters in order to make the function resuable and this function only applies to the Elephant animal.
+// The Elephant animal functionality has a slight difference compared to Monkey and Giraffe, and this is why i wrote a different reusable function for it.
 export const onFeedAnimalElephant = (
   animals,
   picture2,

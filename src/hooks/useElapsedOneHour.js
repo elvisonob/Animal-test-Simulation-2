@@ -1,5 +1,8 @@
 import { useEffect } from 'react';
+
+// The is a React custom hook, I wrote it and included parameters in order to make it resuable for all animals
 export const useElapsedOneHour = (animal, onTimeReduce) => {
+  // I used a useEffect hook to continually upate the UI when an hour has elapsed
   useEffect(() => {
     const startTime = new Date().getTime();
 
