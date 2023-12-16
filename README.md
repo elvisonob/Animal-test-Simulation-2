@@ -1,13 +1,13 @@
 <h1>Project Title</h1>
-Animal-Zoo-Simulator
+<h3>Animal Zoo Simulator<h3>
 
 <h1>Project Description</h1>
-This Application displays three types of Animals in a zoo.
-Each zoo compartment contains five of each type of animal.
-Each animal starts with an health status of 100%.
+This Application displays three types of Animals in a zoo.<br>
+Each zoo compartment contains five of each type of animal.<br>
+Each animal starts with an health status of 100%.<br>
 After each hour, a random figure between 0 and 20 is generated, and this figure's percentage of the current Animal's health reduces their health status.
 
-Each Animal's health status can also be fed/increased when a User queries the Feed button.
+Each Animal's health status can also be fed/increased when a User queries the Feed button.<br><br>
 
 I used create-react-app to execute the project.
 
