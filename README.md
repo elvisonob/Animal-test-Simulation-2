@@ -2,7 +2,7 @@
 <h3>Animal Zoo Simulator<h3>
 
 <h1>Project Description</h1>
-This Application displays three types of Animals in a zoo.<br>
+This Application displays three types of Animals in a zoo.<br><br>
 
 Each zoo compartment contains five of each type of animal.<br>
 
