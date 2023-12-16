@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-// The is a React custom hook, I wrote it to serve as a reusable time update for all animals
+// The is a React custom hook, I wrote it to serve as a reusable current time update for all animals
 export const useZooTime = () => {
   const [time, setTime] = useState(new Date());
   // This useEffect hook is to continually update the current time of the zoo

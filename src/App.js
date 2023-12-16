@@ -6,6 +6,7 @@ import Giraffe from './pages/Giraffe';
 import Elephant from './pages/Elephant';
 import ErrorPage from './pages/Error';
 
+// I used the React-router-DOM 6 package to create routing to each animal's page
 const router = createBrowserRouter([
   { path: '/', element: <HomePage />, errorElement: <ErrorPage /> },
   {
