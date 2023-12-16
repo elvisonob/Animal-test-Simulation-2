@@ -6,9 +6,9 @@ export const onHourReduce = (
   number
 ) => {
   const updatedReductionMonkeys = animals.map((monkey) => {
-    const generatedRandomNumber = Math.floor(Math.random() * 20) + 1; // Generate random number between 0 and 20
+    const generatedRandomNumber = Math.floor(Math.random() * 20) + 1;
     const percentage = (generatedRandomNumber / 100) * monkey.health;
-    const currentHealthStatus = monkey.health - percentage; // Ensure health doesn't go below 0
+    const currentHealthStatus = monkey.health - percentage;
 
     const updatedStatus =
       currentHealthStatus < number ? (
@@ -72,9 +72,9 @@ export const onHourReduceElephant = (
   setAnimals
 ) => {
   const updatedReductionElephants = animals.map((elephant) => {
-    const generatedRandomNumber = Math.floor(Math.random() * 20) + 1; // Generate random number between 0 and 20
+    const generatedRandomNumber = Math.floor(Math.random() * 20) + 1;
     const percentage = (generatedRandomNumber / 100) * elephant.health;
-    const currentHealthStatus = elephant.health - percentage; // Ensure health doesn't go below 0
+    const currentHealthStatus = elephant.health - percentage;
 
     let updatedStatus;
 

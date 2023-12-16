@@ -9,7 +9,7 @@ const Home = () => {
           <h4>
             Welcome to the British Zoo simulation, you can view our selected
             animal's health; reduce their health status, and also feed and
-            increase the health status.
+            increase their health status.
             <br />
             <br />
             Thank you and enjoy the simulation.
