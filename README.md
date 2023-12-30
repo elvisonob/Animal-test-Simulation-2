@@ -10,9 +10,15 @@ Each animal starts with an health status of 100%.<br>
 
 After each hour, a random figure between 0 and 20 is generated, and this figure's percentage of the current Animal's health reduces their health status.
 
+<<<<<<< HEAD
 When a monkey has a health status below 30%, it is proclaimed 'Dead'.<br>
 When a Giraffe has a health status below 50%, it is proclaimed 'Dead'.<br>
 When an Elephant has a health status below 70%, it either 'Can't walk' or 'Dead'<br>
+=======
+When a monkey has a health status below 30%, it is proclaimed 'Dead'.
+When a Giraffe has a health status below 50%, it is proclaimed 'Dead'
+When an Elephant has a health status below 70%, it either 'Can't walk' or 'Dead'
+>>>>>>> 9e3537eebe42229abdd67d3f31fb5bb4e41a80eb
 
 Each Animal's health status can also be fed/increased when a User queries the Feed button.<br>
 
