@@ -10,6 +10,10 @@ Each animal starts with an health status of 100%.<br>
 
 After each hour, a random figure between 0 and 20 is generated, and this figure's percentage of the current Animal's health reduces their health status.
 
+When a monkey has a health status below 30%, it is proclaimed 'Dead'.<br>
+When a Giraffe has a health status below 50%, it is proclaimed 'Dead'.<br>
+When an Elephant has a health status below 70%, it either 'Can't walk' or 'Dead'<br>
+
 Each Animal's health status can also be fed/increased when a User queries the Feed button.<br>
 
 I used create-react-app to execute the project.
