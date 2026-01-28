@@ -13,7 +13,7 @@ const giraffeList = [
     name: 'Giraffe-1',
     image: smilingGiraffe,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
 
   {
@@ -21,7 +21,7 @@ const giraffeList = [
     name: 'Giraffe-2',
     image: smilingGiraffe,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
 
   {
@@ -29,7 +29,7 @@ const giraffeList = [
     name: 'Giraffe-3',
     image: smilingGiraffe,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
 
   {
@@ -37,14 +37,14 @@ const giraffeList = [
     name: 'Giraffe-4',
     image: smilingGiraffe,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
   {
     id: 'g5',
     name: 'Giraffe-5',
     image: smilingGiraffe,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
 ];
 
@@ -73,7 +73,15 @@ const Giraffe = () => {
               height="100%"
               alt=""
             />
-            <h3>Health Status: {giraffeCharacteristics.health.toFixed(0)}%</h3>
+            <h3>
+              Health Status:
+              <span
+                key={giraffeCharacteristics.health}
+                className={classes.jiggle}
+              >
+                {giraffeCharacteristics.health.toFixed(0)}%
+              </span>
+            </h3>
             <h4>
               Active Status:{' '}
               <span style={{ color: 'green', fontSize: 'larger' }}>
@@ -89,7 +97,7 @@ const Giraffe = () => {
           Feed
         </button>
         <button className={classes.toggleHour} onClick={handleHourReduce}>
-          After an hour
+          Starve
         </button>
       </div>
       <div className={classes.timerSection}>

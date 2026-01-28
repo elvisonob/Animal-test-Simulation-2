@@ -13,7 +13,7 @@ const monkeyList = [
     name: 'Monkey-1',
     image: smilingMonkey,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
 
   {
@@ -21,7 +21,7 @@ const monkeyList = [
     name: 'Monkey-2',
     image: smilingMonkey,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
 
   {
@@ -29,7 +29,7 @@ const monkeyList = [
     name: 'Monkey-3',
     image: smilingMonkey,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
 
   {
@@ -37,14 +37,14 @@ const monkeyList = [
     name: 'Monkey-4',
     image: smilingMonkey,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
   {
     id: 'm5',
     name: 'Monkey-5',
     image: smilingMonkey,
     health: 100,
-    status: 'Alive',
+    status: 'Active',
   },
 ];
 
@@ -73,7 +73,15 @@ const Monkey = () => {
               height="100%"
               alt=""
             />
-            <h3>Health Status: {monkeyCharacteristics.health.toFixed(0)}%</h3>
+            <h3>
+              Health Status:
+              <span
+                key={monkeyCharacteristics.health}
+                className={classes.jiggle}
+              >
+                {monkeyCharacteristics.health.toFixed(0)}%
+              </span>
+            </h3>
             <h4>
               Active Status:{' '}
               <span style={{ color: 'green', fontSize: 'larger' }}>
@@ -89,7 +97,7 @@ const Monkey = () => {
           Feed
         </button>
         <button className={classes.toggleHour} onClick={handleHourReduce}>
-          After an hour
+          Starve
         </button>
       </div>
       <div className={classes.timerSection}>

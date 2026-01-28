@@ -5,7 +5,7 @@ export const onHourReduce = (
   picture2,
   picture1,
   setAnimals,
-  number
+  number,
 ) => {
   const updatedReductionMonkeys = animals.map((animal) => {
     const generatedRandomNumber = Math.floor(Math.random() * 20) + 1;
@@ -14,9 +14,9 @@ export const onHourReduce = (
 
     const updatedStatus =
       currentHealthStatus < number ? (
-        <p style={{ color: 'red' }}>Dead</p>
+        <p style={{ color: 'red' }}>Weak</p>
       ) : (
-        'Alive'
+        'Active'
       );
 
     const updatedImage = currentHealthStatus < number ? picture2 : picture1;
@@ -40,7 +40,7 @@ export const onFeedAnimal = (
   picture2,
   picture1,
   setAnimals,
-  number
+  number,
 ) => {
   const feedUpdate = animals.map((animal) => {
     const feedGeneratedRandomNumber =
@@ -51,9 +51,9 @@ export const onFeedAnimal = (
       increasedHealthStatus > 100 ? 100 : increasedHealthStatus;
     const updatedStatus =
       increasedHealthStatus < number ? (
-        <p style={{ color: 'red' }}>Dead</p>
+        <p style={{ color: 'red' }}>Weak</p>
       ) : (
-        'Alive'
+        'Active'
       );
 
     const updatedImage = increasedHealthStatus < number ? picture2 : picture1;
@@ -77,7 +77,7 @@ export const onHourReduceElephant = (
   setHasWalkStatus,
   picture2,
   picture1,
-  setAnimals
+  setAnimals,
 ) => {
   const updatedReductionElephants = animals.map((elephant) => {
     const generatedRandomNumber = Math.floor(Math.random() * 20) + 1;
@@ -92,9 +92,9 @@ export const onHourReduceElephant = (
     } else {
       updatedStatus =
         currentHealthStatus < 69 ? (
-          <p style={{ color: 'red' }}>Dead</p>
+          <p style={{ color: 'red' }}>Weak</p>
         ) : (
-          'Alive and can walk'
+          'Active and can walk'
         );
     }
 
@@ -119,7 +119,7 @@ export const onFeedAnimalElephant = (
   picture2,
   picture1,
   setAnimals,
-  number
+  number,
 ) => {
   const feedUpdate = animals.map((elephant) => {
     const feedGeneratedRandomNumber =
@@ -132,7 +132,7 @@ export const onFeedAnimalElephant = (
       increasedHealthStatus < number ? (
         <p style={{ color: 'orange' }}>Can't walk</p>
       ) : (
-        'Alive and can walk'
+        'Active and can walk'
       );
 
     const updatedImage = increasedHealthStatus < number ? picture2 : picture1;

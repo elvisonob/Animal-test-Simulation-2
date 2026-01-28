@@ -13,7 +13,7 @@ const elephantList = [
     name: 'Elephant-1',
     image: smilingElephant,
     health: 100,
-    status: 'Alive and can walk',
+    status: 'Active and can walk',
   },
 
   {
@@ -21,7 +21,7 @@ const elephantList = [
     name: 'Elephant-2',
     image: smilingElephant,
     health: 100,
-    status: 'Alive and can walk',
+    status: 'Active and can walk',
   },
 
   {
@@ -29,7 +29,7 @@ const elephantList = [
     name: 'Elephant-3',
     image: smilingElephant,
     health: 100,
-    status: 'Alive and can walk',
+    status: 'Active and can walk',
   },
 
   {
@@ -37,14 +37,14 @@ const elephantList = [
     name: 'Elephant-4',
     image: smilingElephant,
     health: 100,
-    status: 'Alive and can walk',
+    status: 'Active and can walk',
   },
   {
     id: 'e5',
     name: 'Elephant-5',
     image: smilingElephant,
     health: 100,
-    status: 'Alive and can walk',
+    status: 'Active and can walk',
   },
 ];
 
@@ -59,7 +59,7 @@ const Elephant = () => {
       setHasCantWalkStatus,
       elephantCantWalk,
       smilingElephant,
-      setElephants
+      setElephants,
     );
   };
 
@@ -71,7 +71,7 @@ const Elephant = () => {
       elephantCantWalk,
       smilingElephant,
       setElephants,
-      69
+      69,
     );
   };
 
@@ -87,7 +87,15 @@ const Elephant = () => {
               height="100%"
               alt=""
             />
-            <h3>Health Status: {elephantCharacteristics.health.toFixed(0)}%</h3>
+            <h3>
+              Health Status:
+              <span
+                key={elephantCharacteristics.health}
+                className={classes.jiggle}
+              >
+                {elephantCharacteristics.health.toFixed(0)}%
+              </span>
+            </h3>
             <h4>
               Active Status:{' '}
               <span style={{ color: 'green', fontSize: 'large' }}>
@@ -106,7 +114,7 @@ const Elephant = () => {
           className={classes.toggleHour}
           onClick={handleHourReduceElephant}
         >
-          After an hour
+          Starve
         </button>
       </div>
       <div className={classes.timerSection}>
